@@ -32,7 +32,7 @@ func HeapSort(data []int) {
 	buildMaxHeap(heap)
 	for i := heap.heapSize; i > 0; i-- {
 		heap.data[0], heap.data[i] = heap.data[i], heap.data[0]
-		heap.heapSize -= 1
+		heap.heapSize--
 		maxHeapify(heap, 0)
 	}
 }

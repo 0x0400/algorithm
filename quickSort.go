@@ -8,11 +8,11 @@ func partition(array []int, start int, end int) int {
 	pivotIdx := start - 1
 	for i := start; i < end; i++ {
 		if array[i] <= pivot {
-			pivotIdx += 1
+			pivotIdx++
 			array[pivotIdx], array[i] = array[i], array[pivotIdx]
 		}
 	}
-	pivotIdx += 1
+	pivotIdx++
 	array[pivotIdx], array[end] = array[end], array[pivotIdx]
 	return pivotIdx
 }
