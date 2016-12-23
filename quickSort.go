@@ -1,23 +1,25 @@
 package algorithm
 
-func partition(array []int, start int, end int) int {
+import (
+	"sort"
+)
+
+func partition(array sort.Interface, start int, end int) int {
 	if start >= end {
 		return start
 	}
-	pivot := array[end]
-	pivotIdx := start - 1
+	pivotIdx := start
 	for i := start; i < end; i++ {
-		if array[i] <= pivot {
+		if array.Less(i, end) {
+			array.Swap(pivotIdx, i)
 			pivotIdx++
-			array[pivotIdx], array[i] = array[i], array[pivotIdx]
 		}
 	}
-	pivotIdx++
-	array[pivotIdx], array[end] = array[end], array[pivotIdx]
+	array.Swap(pivotIdx, end)
 	return pivotIdx
 }
 
-func QuickSort(array []int, start int, end int) {
+func QuickSort(array sort.Interface, start int, end int) {
 	partitionIdx := partition(array, start, end)
 	if partitionIdx > start {
 		QuickSort(array, start, partitionIdx-1)

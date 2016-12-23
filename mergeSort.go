@@ -22,16 +22,12 @@ func merge(data []int, start int, mid int, end int) {
 	}
 }
 
-func sort(data []int, start int, end int) {
+func MergeSort(data []int, start int, end int) {
 	if start >= end {
 		return
 	}
 	mid := start + (end-start)/2
-	sort(data, start, mid)
-	sort(data, mid+1, end)
+	MergeSort(data, start, mid)
+	MergeSort(data, mid+1, end)
 	merge(data, start, mid, end)
-}
-
-func MergeSort(data []int) {
-	sort(data, 0, len(data)-1)
 }
